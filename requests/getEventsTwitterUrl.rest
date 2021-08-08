@@ -1,0 +1,2 @@
+GET http://localhost:3000/events/share/61103b7093aeea3f0cddd047 HTTP/1.1
+content-type: application/json

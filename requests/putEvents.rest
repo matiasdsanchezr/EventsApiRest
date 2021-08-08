@@ -1,0 +1,13 @@
+PUT http://localhost:3000/events/ HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMTAxNTY1NzNkOWNmMzVlY2IyODljMSIsImVtYWlsIjoibWF0w61hc0BhbGdvLmNvbSIsImlhdCI6MTYyODQ0NDA4MCwiZXhwIjoxNjI4NTMwNDgwfQ.Eb36ZTWAEmJ1CdmE0Ch_2F24Ux9OKav01Mb8KdaVBgk
+
+{
+  "id": "6110133f92476a1dccd134f2",
+  "title": "Evento de prueba 123",
+  "description": "Descripcion 123456789",
+  "dates": ["2010-10-03"],
+  "highlight": "true",
+  "place": "Anfiteatro",
+  "imageUrl": "www.unaurl.com"
+}

@@ -1,0 +1,3 @@
+GET http://localhost:3000/events/page/3 HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMTAxNTY1NzNkOWNmMzVlY2IyODljMSIsImVtYWlsIjoibWF0w61hc0BhbGdvLmNvbSIsImlhdCI6MTYyODQ0NDA4MCwiZXhwIjoxNjI4NTMwNDgwfQ.Eb36ZTWAEmJ1CdmE0Ch_2F24Ux9OKav01Mb8KdaVBgk

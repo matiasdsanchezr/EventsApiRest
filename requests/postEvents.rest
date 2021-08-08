@@ -1,0 +1,12 @@
+POST http://localhost:3000/events/ HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMTAzNmI1OWM5OGRkMWQ0NGJhOGVlYSIsImVtYWlsIjoibWF0aWFzQGdtYWlsLmNvbSIsImlhdCI6MTYyODQ1Mjc5MSwiZXhwIjoxNjI4NTM5MTkxfQ.9pr2tQcKIfGRAWmSeOzP6QizoCBIelJoONMhbdMK2zc
+
+{
+  "title": "Un evento generico",
+  "description": "Descripcion de un evento generico.",
+  "dates": ["2010-10-03"],
+  "highlight": "true",
+  "place": "La casa de matias",
+  "imageUrl": "www.pepito.com"
+}
