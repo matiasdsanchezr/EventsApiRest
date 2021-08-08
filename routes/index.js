@@ -11,7 +11,7 @@ router.use('/events', events);
 
 // Ruta por defecto al ingresar en una pagina no registrada
 router.use('/*', (req, res) => {
-  res.status(404);
+  res.status(404).json({ errors: ['page not found'] });
 });
 
 module.exports = router;
