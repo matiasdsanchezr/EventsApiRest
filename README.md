@@ -6,7 +6,7 @@
 
 <div align="center">
 
-[![Status](https://img.shields.io/badge/status-active-success.svg)]()
+[![Status](https://img.shields.io/badge/status-active-success.svg)](https://events-api-rest.herokuapp.com/events)
 [![GitHub Issues](https://img.shields.io/github/issues/matiasdsanchezr/EventsApiRest.svg)](https://github.com/matiasdsanchezr/EventsApiRest/issues)
 [![GitHub Pull Requests](https://img.shields.io/github/issues-pr/matiasdsanchezr/EventsApiRest.svg)](https://github.com/matiasdsanchezr/EventsApiRest/pulls)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE.md)
