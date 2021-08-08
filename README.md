@@ -57,8 +57,11 @@ https://events-api-rest.herokuapp.com/
 
 ## ⛓️ Dependencias / Limitaciones <a name = "limitations"></a>
 
+Debido al tiempo limitado que se empleó para desarrollar esta aplicación se dió prioridad a las funciones esenciales que permiten el correcto funcionamiento del sistema de eventos y se dejaron de lado algunos detalles importantes en el sistema de usuarios:
+
 - Se necesita agregar funciones para modificar los usuarios registrados en la base de datos
-- Al compartir un evento mediante twitter se necesita implementar una opción para seleccionar una fecha en la que el usuario desea asistir
+- Es necesario agregar métodos para verificar los correos electrónicos y los usuarios que se registran para prevenir ataques, registros masivos, etc. 
+- Al compartir un evento mediante twitter se necesita implementar una opción para seleccionar una fecha de asistencia
 
 ## 🏁 Empezando <a name = "getting_started"></a>
 
@@ -100,6 +103,7 @@ A continuación se lista las rutas que posee la API. Todas las rutas devuelven u
 
 #### POST - /users
 **Registrar un nuevo usuario**
+
 Se requiere pasar los parámetros:
 ```
 "email" - Correo electrónico
@@ -111,6 +115,7 @@ Se devuelve "user" con la información del usuario registrado y el id asignado p
 
 #### POST - /users/login
 **Ingresar con un usuario**
+
 Se require pasar los parámetros:
 ```
 "email" - Correo electrónico
@@ -122,6 +127,7 @@ Si las credenciales del usuario son validas se retornara "user" con los datos de
 
 #### GET - /events
 **Obtener eventos y destacados del dia**
+
 Se devuelve:
 ```
 "todayEvents" - Arreglo de eventos con información de los eventos con fechas en el día actual
@@ -130,6 +136,7 @@ Se devuelve:
 
 #### GET - /events/:id
 **Obtener información de un evento mediante id**
+
 Se requiere pasar por parámetro:
 ```
 "id" - ID del evento del cual se requiere los detalles
@@ -141,6 +148,7 @@ Se devuelve:
 
 #### GET - /events/page/:page
 **Obtener eventos paginados**
+
 Se requiere estar logeado como un usuario y pasar mediante header un token de autenticaron con formato Bearer.
 Se requiere pasar por parámetro:
 ```
@@ -154,6 +162,7 @@ Si el numero de pagina es correcto se retorna:
 
 #### GET - /events/share/:id
 **Obtener una url de twitter con la información del evento que se desea compartir**
+
 Se requiere estar logeado como un usuario y pasar mediante el header un token de autenticación con formato Bearer. Ademas se requiere pasar por parámetro:
 ```
 "id" - ID del evento que se desea compartir en Twitter
@@ -161,6 +170,7 @@ Se requiere estar logeado como un usuario y pasar mediante el header un token de
 
 #### POST - /events
 **Registrar un nuevo evento**
+
 Se requiere estar logeado como un usuario y pasar mediante header un token de autenticación con formato Bearer.
 Se requiere pasar mediante body los siguientes parámetros:
 ```
@@ -178,6 +188,7 @@ event - Objeto con la toda información del evento y el id asignado por la base 
 
 #### PUT - /events
 **Modificar la información de un evento**
+
 Se requiere estar logeado como un usuario y pasar mediante el header un token de autenticación con formato Bearer. El usuario solo puede modificar los eventos que se registraron desde su cuenta,
 para ello se debe pasar todos los siguientes parámetros:
 ```
@@ -196,6 +207,7 @@ event - Objeto con la toda información del evento y el id asignado por la base 
 
 #### DELETE - /events/
 **Eliminar un evento de la base de datos**
+
 Se requiere estar logeado como un usuario y pasar mediante el header un token de autenticación con formato Bearer. El usuario solo puede eliminar los eventos que se registraron desde su cuenta,
 para ello se debe pasar por parámetro:
 ```
