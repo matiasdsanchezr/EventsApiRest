@@ -19,7 +19,7 @@ const validate = (req, res, next) => {
 };
 
 // ================================================
-// Validaciones para el modulo events
+// Validaciones para rutas de Events
 // ================================================
 module.exports.getEventsPage = [
   header('authorization')
@@ -39,7 +39,7 @@ module.exports.getEventsPage = [
 
 module.exports.getEventById = [param('id').isMongoId().withMessage('invalid id'), validate];
 
-module.exports.deleteEvent = [
+module.exports.deleteEventById = [
   param('id').isMongoId().withMessage('invalid id'),
   header('authorization')
     .notEmpty()
@@ -55,7 +55,7 @@ module.exports.deleteEvent = [
   validate,
 ];
 
-module.exports.createEvent = [
+module.exports.postEvent = [
   header('authorization')
     .notEmpty()
     .withMessage('missing token')
@@ -86,5 +86,5 @@ module.exports.createEvent = [
 module.exports.putEvent = [
   body('id').isMongoId().withMessage('invalid event id'),
   validate,
-  this.createEvent,
+  this.postEvent,
 ];

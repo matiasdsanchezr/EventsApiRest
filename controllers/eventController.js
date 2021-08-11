@@ -1,23 +1,26 @@
-const { matchedData } = require('express-validator');
 const jwt = require('jsonwebtoken');
 const moment = require('moment');
 const shareTwitter = require('share-twitter');
+const { matchedData } = require('express-validator');
 
 const Event = require('../models/Event');
 const User = require('../models/User');
 
+/** Obtener los 10 eventos y eventos destacados mas próximos a la fecha actual */
 module.exports.getEvents = async (req, res) => {
   const start = moment().startOf('day');
   const end = moment().endOf('day');
 
-  const events = await Event.find({ dates: { $gte: start, $lt: end } });
+  const todayEvents = await Event.find({ dates: { $gte: start, $lt: end } })
+    .sort({ dates: 1 })
+    .limit(10);
 
-  const todayEvents = Object.values(events).filter((event) => !event.highlight);
-  const todayHighlights = Object.values(events).filter((event) => event.highlight);
+  const todayHighlights = Object.values(todayEvents).filter((event) => event.highlight);
 
   return res.json({ todayEvents, todayHighlights });
 };
 
+/** Obtener 10 eventos eventos paginados por proximidad de fecha */
 module.exports.getEventsPage = async (req, res) => {
   const { page } = matchedData(req, { locations: ['params'] });
 
@@ -34,6 +37,7 @@ module.exports.getEventsPage = async (req, res) => {
   return res.json({ events, pagesCount });
 };
 
+/** Obtener la información de un evento usando el id */
 module.exports.getEventById = async (req, res) => {
   const validatedData = matchedData(req, { locations: ['params'] });
 
@@ -42,6 +46,7 @@ module.exports.getEventById = async (req, res) => {
   return event ? res.json({ event }) : res.status(404).json({ errors: 'event not found' });
 };
 
+/** Generar un url para compartir en twitter */
 module.exports.shareEvent = async (req, res) => {
   const { id } = matchedData(req, { locations: ['params'] });
 
@@ -56,6 +61,7 @@ module.exports.shareEvent = async (req, res) => {
   return res.json({ url });
 };
 
+/** Registrar un nuevo evento en la base de datos */
 module.exports.createEvent = async (req, res, next) => {
   const eventData = matchedData(req, { locations: ['body'] });
 
@@ -84,6 +90,7 @@ module.exports.createEvent = async (req, res, next) => {
   }
 };
 
+/** Modificar completamente la información de un evento */
 module.exports.putEvent = async (req, res, next) => {
   const eventData = matchedData(req, { locations: ['body'] });
 
@@ -114,6 +121,7 @@ module.exports.putEvent = async (req, res, next) => {
   }
 };
 
+/** Eliminar un evento usando un id */
 module.exports.deleteEventById = async (req, res, next) => {
   const { id } = matchedData(req, { locations: ['params'] });
 

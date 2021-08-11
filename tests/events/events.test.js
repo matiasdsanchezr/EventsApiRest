@@ -85,14 +85,14 @@ describe('GET /events/:id', () => {
 describe('GET /events/page/:page', () => {
   let lastPage = 0;
 
-  test('Obtener un arreglo con eventos proximos en la primera pagina', async () => {
+  test('Obtener un arreglo con eventos próximos en la primera pagina', async () => {
     const res = await api.get('/events/page/1').set('Authorization', `Bearer ${token}`).expect(200);
     expect(res.body.events).not.toBe(null);
     expect(res.body.events.length).toBe(10);
     lastPage = res.body.pagesCount;
   });
 
-  test('Obtener un arreglo con los eventos proximos de la ultima pagina', async () => {
+  test('Obtener un arreglo con los eventos próximos de la ultima pagina', async () => {
     const res = await api
       .get(`/events/page/${lastPage}`)
       .set('Authorization', `Bearer ${token}`)
@@ -100,7 +100,7 @@ describe('GET /events/page/:page', () => {
     expect(res.body.events).not.toBe(null);
   });
 
-  test('Obtener un arreglo de eventos proximos pasando un numero de pagina invalido', async () => {
+  test('Obtener un arreglo de eventos próximos pasando un numero de pagina invalido', async () => {
     const res = await api
       .get(`/events/page/${lastPage + 1}`)
       .set('Authorization', `Bearer ${token}`)
@@ -108,7 +108,7 @@ describe('GET /events/page/:page', () => {
     expect(res.body.errors).not.toBe(null);
   });
 
-  test('Obtener un arreglo de eventos proximos usando un token invalido', async () => {
+  test('Obtener un arreglo de eventos próximos usando un token invalido', async () => {
     const res = await api.get('/events/page/1').set('Authorization', 'asd').expect(400);
     expect(res.body.errors).not.toBe(null);
   });

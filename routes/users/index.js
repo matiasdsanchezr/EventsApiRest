@@ -6,9 +6,9 @@ const validators = require('./usersValidators');
 const router = express.Router();
 
 // Registrar un nuevo usuario en la base de datos
-router.post('/', validators.checkUserPost, userController.createUser);
+router.post('/', validators.postUser, userController.createUser);
 
-// Actualizar la información de un vehiculo usando el id
-router.post('/login', validators.checkUserLogin, userController.loginUser);
+// Ingresar como un usuario registrado
+router.post('/login', validators.postUserLogin, userController.loginUser);
 
 module.exports = router;

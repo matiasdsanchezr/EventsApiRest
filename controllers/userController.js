@@ -1,9 +1,10 @@
 const bcrypt = require('bcrypt');
-const { matchedData } = require('express-validator');
 const jwt = require('jsonwebtoken');
+const { matchedData } = require('express-validator');
 
 const User = require('../models/User');
 
+/** Registrar un nuevo usuario en la base de datos */
 module.exports.createUser = async (req, res, next) => {
   const validatedData = matchedData(req, { locations: ['body'] });
 
@@ -15,6 +16,7 @@ module.exports.createUser = async (req, res, next) => {
   });
 };
 
+/** Identificarse como un usuario y generar un token */
 module.exports.loginUser = async (req, res, next) => {
   const validatedData = matchedData(req, { locations: ['body'] });
   const { email, password } = validatedData;

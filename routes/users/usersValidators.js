@@ -16,7 +16,7 @@ const validate = (req, res, next) => {
   return res.status(400).json({ errors: errorsMsgArr });
 };
 
-module.exports.checkUserPost = [
+module.exports.postUser = [
   body('email')
     .isLength({ max: 30 })
     .isEmail()
@@ -60,7 +60,7 @@ module.exports.checkUserPost = [
   validate,
 ];
 
-module.exports.checkUserLogin = [
+module.exports.postUserLogin = [
   body('email').isLength({ max: 30 }).isEmail().normalizeEmail()
     .withMessage('invalid email'),
   body('password')
